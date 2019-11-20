@@ -13,6 +13,7 @@ import GameKit
 class MenuScene: SKScene {
     var gameTitle = SKLabelNode()
     var playButton = SKShapeNode()
+    var game = GameScene()
     //    var bestScore =
     
     override func didMove(to view: SKView) {
@@ -52,7 +53,24 @@ class MenuScene: SKScene {
         addChild(playButton)
         
     }
-    
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            let touchedNode = self.nodes(at: location)
+            for node in touchedNode {
+                if node.name == "play_button" {
+                    startGame()
+                }
+            }
+        }
+    }
+    func startGame() {
+        let gameScene = GameScene(size: size)
+        gameScene.scaleMode = scaleMode
+        let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+        view?.presentScene(gameScene, transition: reveal)
+        print("should have presented menu")
+        
+    }
     
 }

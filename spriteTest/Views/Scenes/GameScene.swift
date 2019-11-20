@@ -53,11 +53,11 @@ class GameScene: SKScene {
            }
         // Presents menu scene
     func startGame() {
-        let menuScene = MenuScene(size: size)
-        menuScene.scaleMode = scaleMode
-        let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-        view?.presentScene(menuScene, transition: reveal)
-        print("should have presented menu")
+//        let menuScene = MenuScene(size: size)
+//        menuScene.scaleMode = scaleMode
+//        let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+//        view?.presentScene(menuScene, transition: reveal)
+//        print("should have presented menu")
         makeShip()
         spawnDebris()
     }
@@ -73,39 +73,7 @@ class GameScene: SKScene {
         addChild(shipClasses)
     }
     
-    private func initializeMenu() {
-        //Create game title
-        gameLogo = SKLabelNode(fontNamed: "ArialRoundedMTBold")
-        gameLogo.zPosition = 1
-        gameLogo.position = CGPoint(x: frame.midX, y: (frame.size.height) - 100)
-        gameLogo.fontSize = 60
-        gameLogo.text = "AtroJunky"
-        gameLogo.fontColor = SKColor.red
-        self.addChild(gameLogo)
-        //Create best score label
-        bestScore = SKLabelNode(fontNamed: "ArialRoundedMTBold")
-        bestScore.zPosition = 1
-        bestScore.position = CGPoint(x: frame.midX, y: gameLogo.position.y - 50)
-        bestScore.fontSize = 40
-//        bestScore.text = "Best Score: \(UserDefaults.standard.integer(forKey: "bestScore"))"
-        bestScore.text = "best score"
-        bestScore.fontColor = SKColor.white
-        self.addChild(bestScore)
-        //Create play button
-        playButton = SKShapeNode()
-        playButton.name = "play_button"
-        playButton.zPosition = 1
-        playButton.position = CGPoint(x: frame.midX, y: frame.midY - 200)
-        playButton.fillColor = SKColor.cyan
-        let topCorner = CGPoint(x: -50, y: 50)
-        let bottomCorner = CGPoint(x: -50, y: -50)
-        let middle = CGPoint(x: 50, y: 0)
-        let path = CGMutablePath()
-        path.addLine(to: topCorner)
-        path.addLines(between: [topCorner, bottomCorner, middle])
-        playButton.path = path
-        self.addChild(playButton)
-    }
+
     // just messing around with physics
     func makeBall() {
         let ballRadius: CGFloat = 20
